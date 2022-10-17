@@ -5,18 +5,19 @@ for var in "$@"
 do
     # echo "$var,0,1,2,3,4,5,6,7,8,9" >>compression.csv
     Record="$var,"
-    for i in {0..9}
+    for i in 0 1 2 3 4 5 6 7 8 9
         do
-            START="$(date +%s%N)"
+            START="$(date +%N)"
             Rate="$(zip -$i -v $var.zip $var | echo $(awk '{if (match($5, "%")) rate=$5; gsub("%", "", rate); print rate;}'))"
             Record+="$Rate,"
-            DURATION=$[ $(date +%s%N) - ${START} ]
-            if [ "$i" == "9" ];
+            echo "rate: $Rate"
+            Duration=($(date +%N) - ${START})
+            if [ $i == 9 ];
             then
                 # zip -$i -v $var.zip $var
-                Record+="$DURATION"
+                Record+="$Duration"
             else
-                Record+="$DURATION,"
+                Record+="$Duration,"
             fi
         done
 
