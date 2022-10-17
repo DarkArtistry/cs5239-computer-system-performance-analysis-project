@@ -7,11 +7,10 @@ do
     Record="$var,"
     for i in 0 1 2 3 4 5 6 7 8 9
         do
-            START="$(date +%N)"
+            START="$(date +%s%N)"
             Rate="$(zip -$i -v $var.zip $var | echo $(awk '{if (match($5, "%")) rate=$5; gsub("%", "", rate); print rate;}'))"
             Record+="$Rate,"
-            echo "rate: $Rate"
-            Duration=($(date +%N) - ${START})
+            Duration=$[ $(date +%s%N) - ${START}]
             if [ $i == 9 ];
             then
                 # zip -$i -v $var.zip $var
