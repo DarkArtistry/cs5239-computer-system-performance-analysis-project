@@ -8,8 +8,8 @@ def main():
 	#			fill real_time [ms]
 	#			fill archive_size [bytes]
 	level        = list(range(10))
-	real_time    = [0, 0, 0, 0, 0, 0, 0, 1, 0, 0]
-	archive_size = [0, 77, 78, 80, 82, 83, 84, 84, 84, 84]
+	real_time    = [0.005,0.017,0.020,0.029,0.024,0.038,0.065,0.098,0.190,0.205]
+	archive_size = [1440218,331253,310248,285757,255569,240879,231742,229192,227524,227390]
 
 	archive_size = [it / 1024 for it in archive_size]
 
